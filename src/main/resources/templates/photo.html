@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<td th:text="${photo.title}"></td>
+<td th:text="${photo.tags}"></td>
+<form th:action="@{/photos/} + ${photo.id}" th:method="delete">
+    <button type="submit">Delete photo</button>
+</form>
+</body>
+</html>

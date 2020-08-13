@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>My Photos</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Photo title</th>
+        <th>Photo tags</th>
+    </tr>
+    <tr th:each="photo : ${photos}">
+        <a href="photo.html"></a><td>${photo.id}</td>
+        <td>${photo.title}</td>
+        <td>${photo.tags}</td>
+</table>
+<h1><a href="/photos/add">Add photo</a></h1>
+</body>
+</html>
