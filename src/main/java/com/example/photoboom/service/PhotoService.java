@@ -31,9 +31,9 @@ public class PhotoService {
         return photos;
     }
 
-    public Optional<Photo> retrievePhotoById(Long id) {
+    public Photo retrievePhotoById(Long id) {
         Optional<Photo> photo = photoRepository.findById(id);
-        return photo;
+        return photo.get();
     }
 
     public void deletePhoto(Long id) {

@@ -41,8 +41,9 @@ public class PhotoController {
     }
 
     @GetMapping(value = "/photo/{id}")
-    public Optional<Photo> retrievePhotoById(@PathVariable Long id) {
-        return photoService.retrievePhotoById(id);
+    public ModelAndView retrievePhotoById(@PathVariable Long id) {
+        Photo photo = photoService.retrievePhotoById(id);
+        return new ModelAndView("photo", "photo", photo);
     }
 
     @GetMapping("/photos/add")
@@ -56,7 +57,7 @@ public class PhotoController {
         return "redirect:/photos";
     }
 
-    @DeleteMapping(value = "/photo/{id}")
+    @PostMapping(value = "/photo/{id}")
     public String deletePhoto(@PathVariable Long id) {
         photoService.deletePhoto(id);
         return "redirect:/photos";

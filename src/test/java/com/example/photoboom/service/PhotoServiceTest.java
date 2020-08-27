@@ -51,7 +51,7 @@ public class PhotoServiceTest {
     public void should_retrieve_photos() {
         //given
         Photo photo = new Photo();
-        photo.setId(1);
+        photo.setId(1L);
         List<Photo> photos = new ArrayList<>();
         photos.add(photo);
 
@@ -83,13 +83,20 @@ public class PhotoServiceTest {
     @Test
     public void should_retrieve_photo_by_id() {
         //given
-        when(photoRepository.findById(1L)).thenReturn(Optional.of(new Photo()));
+        Photo mockPhoto = new Photo();
+        mockPhoto.setId(1L);
+        mockPhoto.setTitle("title");
+        mockPhoto.setTag("tag");
+
+        when(photoRepository.findById(1L)).thenReturn(Optional.of(mockPhoto));
 
         //when
-        Optional<Photo> photo = photoService.retrievePhotoById(1L);
+        Photo photo = photoService.retrievePhotoById(1L);
 
         //then
-        assertThat(photo.isPresent()).isEqualTo(true);
+        assertThat(photo.getId()).isEqualTo(1L);
+        assertThat(photo.getTag()).isEqualTo("tag");
+        assertThat(photo.getTitle()).isEqualTo("title");
     }
 
     @Test

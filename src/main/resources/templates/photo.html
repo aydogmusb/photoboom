@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
-<td th:text="${photo.title}"></td>
-<td th:text="${photo.tags}"></td>
-<form th:action="@{/photos/} + ${photo.id}" th:method="delete">
-    <button type="submit">Delete photo</button>
-</form>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Photo title</th>
+        <th>Photo tags</th>
+    </tr>
+    <tr>
+        <td th:text="${photo.id}">Id</td>
+        <td th:text="${photo.title}">Title</td>
+        <td th:text="${photo.tag}">Tags</td>
+
+    </tr>
+</table>
+<h1>
+    <form th:action="@{/photo/} + ${photo.id}" th:method="post">
+        <button type="submit">Delete photo</button>
+    </form>
+</h1>
 </body>
 </html>

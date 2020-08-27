@@ -6,8 +6,8 @@ import javax.persistence.*;
 public class Photo {
     @Id
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -23,11 +23,11 @@ public class Photo {
         this.tag = tag;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
